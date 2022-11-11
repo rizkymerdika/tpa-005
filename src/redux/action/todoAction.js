@@ -1,6 +1,7 @@
 export const COMPLETE = 'COMPLETE'
 export const ADD_TODO = 'ADD_TODO'
 export const DELETE = 'DELETE'
+export const UPDATE = 'UPDATE'
 
 export function handleComplete(item){
     return {
@@ -20,5 +21,12 @@ export function handleDelete(index){
     return{
         type: DELETE,
         index
+    }
+}
+
+export function handleUpdate(updateTodo){
+    return{
+        type: UPDATE,
+        payload: updateTodo
     }
 }

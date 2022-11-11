@@ -1,16 +1,21 @@
-import { ADD_TODO, COMPLETE, DELETE } from "../action/todoAction"
+import { ADD_TODO, COMPLETE, DELETE, UPDATE } from "../action/todoAction"
 
 const initialState = [
     {
         id: 1,
-        title: "Todo 1",
+        title: "Buy Milk",
         completed: false,
     },
     {
         id: 2,
-        title: "Todo 2",
+        title: "Buy Egg",
         completed: true,
     },
+    {
+        id: 3,
+        title: "Buy T-Shirt",
+        completed: false,
+    }
 ]
 
 function todoReducer(state = initialState, action){
@@ -28,6 +33,17 @@ function todoReducer(state = initialState, action){
         case DELETE:
             const newState = state.filter((item, index) => index != action.index)
             return newState
+        case UPDATE:
+            const data = action.payload
+            const editedArray = []
+            state.map((item) => {
+                if (item.id === data.id) {
+                    item.title = data.title
+                    item.completed = false
+                }
+                editedArray.push(item)
+            })
+            return editedArray
         default:
             return state
     }
