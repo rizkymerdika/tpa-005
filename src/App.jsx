@@ -3,6 +3,7 @@ import Form from './components/Form'
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import TodoList from './components/TodoList'
 import { useState } from 'react'
+import { Helmet } from 'react-helmet'
 
 function App() {
   const [editPage, setEditPage] = useState(false)
@@ -19,6 +20,9 @@ function App() {
 
   return (
     <div className="App">
+      <Helmet>
+        <title>To Do List App</title>
+      </Helmet>
       <h1>What's the plan for today ?</h1>
       <Form editPage={editPage} editTodo={editTodo} cancelEdit={cancelEdit} />
       <TodoList handleEdit={handleEdit} editPage={editPage} />
